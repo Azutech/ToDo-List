@@ -7,7 +7,7 @@ import { StatusCodes} from 'http-status-codes'
 const taskClient = new PrismaClient().task;
 
 // getAllTask
-export const task = async (req: Request, res: Response) => {
+export const onetask = async (req: Request, res: Response) => {
   try {
 
     const {taskId} = req.query
