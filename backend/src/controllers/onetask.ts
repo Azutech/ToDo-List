@@ -27,7 +27,7 @@ export const onetask = async (req: Request, res: Response) => {
         throw new Error ('Error retreiving task')
     }
 
-    res.status(StatusCodes.OK).json({ data: task });
+    res.status(StatusCodes.OK).json({  msg: 'One task retreived successfully', data: task });
   } catch (err : any) {
     console.error(err.message);
 		const statusMap: Record<string, number> = {

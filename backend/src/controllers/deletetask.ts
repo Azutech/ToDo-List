@@ -27,7 +27,7 @@ export const deleteTask = async (req: Request, res: Response) => {
         throw new Error ('Error delete tasks')
     }
 
-    res.status(StatusCodes.OK).json({ data: task });
+    return res.status(StatusCodes.NO_CONTENT).json({ msg: 'Task deleted successfully',data: task });
   } catch (err : any) {
     console.error(err.message);
 		const statusMap: Record<string, number> = {

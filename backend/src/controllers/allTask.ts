@@ -16,7 +16,7 @@ export const alltask = async (req: Request, res: Response) => {
         throw new Error ('Error retrieving tasks')
     }
 
-    res.status(StatusCodes.OK).json({ data: tasks });
+    res.status(StatusCodes.OK).json({  msg: 'Task retrieved successfully',  data: tasks });
   } catch (err : any) {
     console.error(err.message);
 		const statusMap: Record<string, number> = {

@@ -12,16 +12,20 @@ export const createTask = async (req : Request, res: Response) => {
     const {name} = req.body
 
     try {
+
+        const taskData = {
+            name,
+            };
       
       const task = await taskClient.create({
-        data: name,
+        data: taskData,
       });
 
       if (!task) {
         throw new Error ('Can not create task ')
       }
   
-      res.status(StatusCodes.CREATED).json({ data: task });
+      res.status(StatusCodes.CREATED).json({  msg: 'Task created successfully', data: task });
     } catch (err: any) {
         console.error(err);
 		const statusMap: Record<string, number> = {

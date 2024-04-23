@@ -5,12 +5,15 @@ import {config} from 'dotenv';
 config()
 
 import { PORT } from './utils/config';
+import { task } from './routes/task';
 
 const server : Application = express()
 
 server.use(express.json());
 // server.use(helmet());
 server.use(express.urlencoded({ extended: true }));
+
+server.use('/task', task)
 
 server.get('/', (req: Request, res: Response) => {
 	res.status(StatusCodes.OK).json(
