@@ -1,9 +1,11 @@
 import express, {Application, Request, Response} from 'express'
 import { StatusCodes} from 'http-status-codes'
+import {config} from 'dotenv';
 
+config()
 
+import { PORT } from './utils/config';
 
-const PORT = 3000
 const server : Application = express()
 
 server.use(express.json());
@@ -21,7 +23,7 @@ server.get('*', (req: Request, res: Response) => {
 });
 
 server.listen( PORT, () => {
-    `Transport-Dek is listening at http://localhost:${PORT} 🚀🚀`
+  console.log( `Transport-Dek is listening at http://localhost:${PORT} 🚀🚀`)
 })
 
 export default { server }
