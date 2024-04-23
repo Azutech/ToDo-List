@@ -25,7 +25,7 @@ export const createAuthor = async (req : Request, res: Response) => {
     } catch (err: any) {
         console.error(err);
 		const statusMap: Record<string, number> = {
-			'Can not create task ': StatusCodes.CONFLICT,
+			'Can not create task ': StatusCodes.BAD_REQUEST,
 		};
 
 		const statusCode = statusMap[err.message]
