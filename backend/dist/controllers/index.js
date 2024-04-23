@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateTask = exports.alltask = exports.onetask = exports.deleteTask = exports.createTask = void 0;
+const createTask_1 = require("./createTask");
+Object.defineProperty(exports, "createTask", { enumerable: true, get: function () { return createTask_1.createTask; } });
+const deletetask_1 = require("./deletetask");
+Object.defineProperty(exports, "deleteTask", { enumerable: true, get: function () { return deletetask_1.deleteTask; } });
+const onetask_1 = require("./onetask");
+Object.defineProperty(exports, "onetask", { enumerable: true, get: function () { return onetask_1.onetask; } });
+const allTask_1 = require("./allTask");
+Object.defineProperty(exports, "alltask", { enumerable: true, get: function () { return allTask_1.alltask; } });
+const updateTask_1 = require("./updateTask");
+Object.defineProperty(exports, "updateTask", { enumerable: true, get: function () { return updateTask_1.updateTask; } });
