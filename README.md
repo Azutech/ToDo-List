@@ -6,7 +6,7 @@ A software To-Do app for adding list of plans to execute which was built with [N
 
 To install the project, follow these steps:
 
--  Clone the repository: `git clone https://github.com/Azutech/Grad-Cali`
+-  Clone the repository: `git clone https://github.com/Azutech/ToDo-List`
 -  Change to the project directory: `cd frontend` for the frontend `cd backend` for the backend 
 -  Install the dependencies: `npm install`
 -  Run the project: `npm start ` for the frontend `npn run dev` for the backend 
