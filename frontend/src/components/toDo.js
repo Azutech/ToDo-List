@@ -3,7 +3,7 @@ import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { deleteToDo } from "../utils/HandleApp";
 
-const Todos = ({ data, updateMode, text,setToDo }) => {
+const Todos = ({ data, updateMode, text, setToDo }) => {
   return (
     <div className="todo">
       <div className="text">{data?.name}</div>
