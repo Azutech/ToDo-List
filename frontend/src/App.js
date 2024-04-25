@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import Todos from "./components/toDo";
-import { addToDo, getAllTodo } from "./utils/HandleApp";
+import { addToDo, getAllTodo, updateToDo } from "./utils/HandleApp";
 
 function App() {
   const [toDo, setToDo] = useState([]); // Initialize the state
   const [text, setText] = useState("  ");
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [toDoId, setToDoId] = useState("");
 
   // Call the API when the component mounts
   useEffect(() => {
     getAllTodo(setToDo); // Pass the state updater function to the API call
   }, []); // Empty dependency array to run only once on component mount
+
+  const updateMode = (id, name) => {
+    setIsUpdating(true);
+    setText(name);
+    setToDoId(id);  
+  };
 
   return (
     <div className="App">
@@ -22,13 +30,26 @@ function App() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <div className="add" onClick={() => addToDo(text, setText, setToDo)}>
-            Add
+          <div
+            className="add"
+            onClick={
+              isUpdating
+                ? () =>
+                    updateToDo(toDoId, text, setToDo, setText, setIsUpdating)
+                : () => addToDo(text, setText, setToDo)
+            }
+          >
+            {isUpdating ? "Update" : "Add"}
           </div>
         </div>
         <div className="list">
-          {toDo.map((item) => (
-            <Todos key={item._id} text={item.name} />
+          {toDo && toDo.map((item) => (
+            <Todos
+              key={item.id}
+              data={item}
+              updateMode={updateMode}
+              text={text}
+            />
           ))}
         </div>
       </div>

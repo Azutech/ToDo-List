@@ -49,5 +49,28 @@ const addToDo = (text, setText, setToDo) => {
       console.log(error.config);
     });
 };
+const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
+    axios
+    .put(`${baseUrl}/task/updateTask?taskId=${toDoId}`, { name: text.trim() })
+    .then((response) => {
+      console.log(response);
+      setText("");
+      setIsUpdating(false);
+      getAllTodo(setToDo);
+      // Assuming response.data.data is the new todo
+    })
+    .catch((error) => {
+      console.error("Error Sending data:", error);
+      if (error.response) {
+        console.error("Error status", error.response.status);
+        console.error("Error data", error.response.data);
+      } else if (error.request) {
+        console.error("Error request", error.request);
+      } else {
+        console.error("Error message", error.message);
+      }
+      console.log(error.config);
+    });
+};
 
-export { getAllTodo, addToDo };
+export { getAllTodo, addToDo, updateToDo };
