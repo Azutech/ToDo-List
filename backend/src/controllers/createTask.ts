@@ -12,6 +12,9 @@ export const createTask = async (req: Request, res: Response) => {
 			name,
 		};
 
+		
+
+
 		const task = await taskClient.create({
 			data: taskData,
 		});
@@ -19,6 +22,8 @@ export const createTask = async (req: Request, res: Response) => {
 		if (!task) {
 			throw new Error('Can not create task ');
 		}
+
+
 
 		res.status(StatusCodes.CREATED).json({
 			msg: 'Task created successfully',
