@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Todos from "./components/toDo";
-import { addToDo, getAllTodo, updateToDo } from "./utils/HandleApp";
+import { addToDo, getAllTodo, updateToDo, deleteToDo } from "./utils/HandleApp";
 
 function App() {
   const [toDo, setToDo] = useState([]); // Initialize the state
@@ -16,7 +16,7 @@ function App() {
   const updateMode = (id, name) => {
     setIsUpdating(true);
     setText(name);
-    setToDoId(id);  
+    setToDoId(id);
   };
 
   return (
@@ -43,14 +43,17 @@ function App() {
           </div>
         </div>
         <div className="list">
-          {toDo && toDo.map((item) => (
-            <Todos
-              key={item.id}
-              data={item}
-              updateMode={updateMode}
-              text={text}
-            />
-          ))}
+          {toDo &&
+            toDo.map((item) => (
+              <Todos
+                key={item.id}
+                data={item}
+                updateMode={updateMode}
+                text={text}
+                deleteToDo={deleteToDo}
+                setToDo={setToDo}
+              />
+            ))}
         </div>
       </div>
     </div>

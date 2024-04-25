@@ -50,7 +50,7 @@ const addToDo = (text, setText, setToDo) => {
     });
 };
 const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
-    axios
+  axios
     .put(`${baseUrl}/task/updateTask?taskId=${toDoId}`, { name: text.trim() })
     .then((response) => {
       console.log(response);
@@ -72,5 +72,27 @@ const updateToDo = (toDoId, text, setToDo, setText, setIsUpdating) => {
       console.log(error.config);
     });
 };
+const deleteToDo = (toDoId, setToDo) => {
+  console.log(toDoId);
+  axios
+    .delete(`${baseUrl}/task/deleteTask?taskId=${toDoId}`)
+    .then((response) => {
+      console.log(response);
+      getAllTodo(setToDo);
+      // Assuming response.data.data is the new todo
+    })
+    .catch((error) => {
+      console.error("Error Sending data:", error);
+      if (error.response) {
+        console.error("Error status", error.response.status);
+        console.error("Error data", error.response.data);
+      } else if (error.request) {
+        console.error("Error request", error.request);
+      } else {
+        console.error("Error message", error.message);
+      }
+      console.log(error.config);
+    });
+};
 
-export { getAllTodo, addToDo, updateToDo };
+export { getAllTodo, addToDo, updateToDo, deleteToDo };
