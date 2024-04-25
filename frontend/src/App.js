@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Todos from "./components/toDo";
-import { getAllTodo } from "./utils/HandleApp";
+import { addToDo, getAllTodo } from "./utils/HandleApp";
 
 function App() {
   const [toDo, setToDo] = useState([]); // Initialize the state
+  const [text, setText] = useState("  ");
 
   // Call the API when the component mounts
   useEffect(() => {
@@ -15,8 +16,15 @@ function App() {
       <div className="container">
         <h1>ToDo App</h1>
         <div className="top">
-          <input type="text" placeholder="Add Todos" />
-          <div className="add">Add</div>
+          <input
+            type="text"
+            placeholder="Add Todos"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <div className="add" onClick={() => addToDo(text, setText, setToDo)}>
+            Add
+          </div>
         </div>
         <div className="list">
           {toDo.map((item) => (
@@ -29,4 +37,3 @@ function App() {
 }
 
 export default App;
-
